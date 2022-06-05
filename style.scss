@@ -1,0 +1,974 @@
+@charset "utf-8";
+
+body {
+  font-family: "游ゴシック体", "YuGothic", "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
+}
+
+.header {
+  height: 100px;
+
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 0 0 50px;
+  }
+
+  &__logo {
+    width: 100px;
+    z-index: 9;
+  }
+}
+
+.hamburger {
+  z-index: 10;
+  width: 100px;
+  height: 100px;
+  background-color: rgb(252, 44, 44);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: flex;
+  z-index: 10;
+
+  & span {
+    content: "";
+    display: block;
+    height: 3px;
+    width: 60px;
+    background-color: azure;
+    position: absolute;
+    left: 20px;
+    color: white;
+    border-radius: 3px;
+    transition: .3s;
+  }
+
+  & span:nth-child(1) {
+    top: 30px;
+  }
+
+  & span:nth-child(2) {
+    top: 50px;
+  }
+
+  & span:nth-child(3) {
+    top: 70px;
+  }
+
+}
+
+.hamburger.active span:nth-child(1) {
+  top: 50px;
+  transform: rotate(225deg);
+}
+
+.hamburger.active span:nth-child(2) {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.hamburger.active span:nth-child(3) {
+  top: 50px;
+  transform: rotate(-225deg);
+}
+
+// SP
+@media (max-width: 900px) {
+  .header {
+    &__inner {
+      padding: 25px 25px 0 25px;
+
+      .hamburger {
+          position: fixed;
+          top: 0;
+          right: 0;
+          width: 70px;
+          height: 70px;
+
+          & span {
+            left:15px;
+            width: 40px;
+          }
+
+          & span:nth-child(1) {
+            top: 24px;
+          }
+        
+          & span:nth-child(2) {
+            top: 34px;
+          }
+        
+          & span:nth-child(3) {
+            top: 44px;
+          }
+        }
+      }
+    }
+
+    .hamburger.active span:nth-child(1) {
+      top: 34px;
+      transform: rotate(225deg);
+    }
+    
+    .hamburger.active span:nth-child(2) {
+      background-color: rgba(255, 255, 255, 0);
+    }
+    
+    .hamburger.active span:nth-child(3) {
+      top: 34px;
+      transform: rotate(-225deg);
+    }
+  }
+
+
+#navi {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(252, 44, 44);
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  opacity: .9;
+  display: none;
+  z-index: 9;
+
+  .logo {
+    width: 100px;
+    position: absolute;
+    top: 40px;
+    left: 50px;
+  }
+
+  .navi__menu {
+    margin-top: 150px;
+
+    & li {
+      margin-bottom: 20px;
+
+      & a {
+        font-weight: bold;
+        position: relative;
+      }
+
+      & a::before {
+        content: "";
+        position: absolute;
+        top: 1px;
+        left: -30px;
+        border: 8px solid transparent;
+        border-left: 10px solid white;
+      }
+    }
+  }
+
+  .navi__btn {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+    position: relative;
+    border: 1px solid white;
+    padding: 20px 30px;
+    transition: all 1s;
+
+    &:hover {
+      background-color: #fff;
+      color: rgb(252, 44, 44);
+    }
+
+    &::before {
+      content: "";
+      width: 100%;
+      height: 100%;
+      display: block;
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      border-bottom: 1px solid white;
+      border-right: 1px solid white;
+      transition: 0.5s;
+    }
+
+    &:hover::before {
+      position: absolute;
+      top: 1px;
+      left: 1px;
+    }
+  }
+}
+
+// SP
+@media (max-width:900px){
+  #navi .logo{
+    top:25px;
+    left:25px;
+  }
+}
+
+.mv {
+  height: 720px;
+  position: relative;
+
+
+  &__text {
+    position: absolute;
+    top: 280px;
+    left: 10%;
+    z-index: 8;
+
+    p {
+      font-size: 46px;
+      font-weight: bold;
+      text-shadow: 0 4px 6px white;
+      line-height: 1.5em;
+    }
+
+    a {
+      display: block;
+      background-color: rgb(252, 44, 44);
+      border-radius: 10px;
+      border-bottom: 6px solid rgb(172, 28, 28);
+      color: azure;
+      padding: 30px 0 30px 50px;
+      font-size: 24px;
+      margin-top: 10px;
+      transition: 0.3s;
+    }
+
+    a::after {
+      content: "";
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border-top: solid 2px #fff;
+      border-right: solid 2px #fff;
+      transform: rotate(45deg);
+      margin-left: 100px;
+    }
+
+    a:hover,
+    a:hover::before {
+      opacity: .9;
+      transform: scale(1.03);
+    }
+
+  }
+
+  /*
+メインビジュアル
+animationを使用して、画像をフェードイン、フェードアウトで切り替えを行う
+*/
+  .mv__image {
+    & li {
+      width: 75%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      /* 最初は3枚の画像非表示 */
+      opacity: 0;
+      /*
+      アニメーションを実行
+      fade：下で定義している「@keyframes fade」を実行
+      15s：「@keyframes fade」の処理を15秒かけて実行
+      infinite：アニメーションの処理を無限に繰り返す
+      */
+      animation: fade 15s infinite;
+    }
+
+    /*
+    1～3枚目の画像のアニメーション実行タイミングを設定
+    「animation-delay: 00s;」で実行設定
+    */
+    & li:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    & li:nth-child(2) {
+      animation-delay: 5s;
+    }
+
+    & li:nth-child(3) {
+      animation-delay: 10s;
+    }
+
+    & li img {
+      width: 100%;
+      height: 720px;
+      object-fit: cover;
+    }
+
+    /*
+    「box-shadow」で画像のまわりをぼかす
+    */
+    & li::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      box-shadow: inset 0px 0px 30px 30px #ffffff;
+    }
+
+    /*
+    アニメーション処理
+    上の「animation」で15sを指定しているので下記の処理を15秒かけて実行
+    0%が0秒を表し、100%が15秒後を表す。
+
+    0%の「opacity: 0;」で非表示の状態からスタートし、
+    15%になるまでの間に少しづつ画像を表示（フェードイン）させる。
+    そこから30%の時点までは画像を表示させたままの状態を維持し、
+    45%の時点に向けて画像を非表示（フェードアウト）する。
+    そこから100%まで非表示の状態を維持する。
+    */
+
+    @keyframes fade {
+      0% {
+        opacity: 0;
+      }
+
+      15% {
+        opacity: 1;
+      }
+
+      30% {
+        opacity: 1;
+      }
+
+      45% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 0;
+      }
+
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .main .mv {
+    height: 490px;
+    padding: 0 20px;
+    position: relative;
+
+    &__text {
+      position: absolute;
+      bottom: 0;
+      left: 16px;
+      width:calc(100% - 32px);
+
+      & p {
+        margin-top: 40px;
+        font-size: 24px;
+      }
+
+      & a {
+        padding: 20px 0 20px 30px;
+        display: block;
+        text-align: center;
+      }
+
+      & a::after {
+        margin-left: 6px;
+        margin-right: 30px;
+      }
+    }
+
+    .mv__image li {
+      width: 100%;
+      height: 300px;
+
+      img {
+        height: 100%;
+      }
+    }
+  }
+
+}
+
+// 共通パーツ
+.cat--title {
+  font-size: 2.25em;
+  text-align: center;
+  font-weight: bold;
+}
+
+.cat--title::after {
+  content: "";
+  display: block;
+  height: 4px;
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  background-color: black;
+}
+
+@media (max-width:900px) {
+  .cat--title {
+    font-size: 1.75rem;
+    text-align: center;
+    font-weight: bold;
+  }
+}
+
+
+.reason {
+  padding-top: 150px;
+
+  &__container {
+    background-color: rgb(252, 44, 44);
+    margin-top: 100px;
+    padding: 80px 0;
+
+
+    .fade-left {
+      animation: slide-left .8s ease-out 0.3s 1 forwards;
+    }
+
+    /*
+            slide-left：下で定義している「@keyframes slide-left」を実行
+            0.5s：アニメーションが始まってから終わるまでの時間（0.5sかけて実行）
+            ease-out：アニメーションの変化（開始時は早く、終了時は緩やかに変化）
+            0s：アニメーションが始まるまでの時間（0sですぐに実行）
+            1：アニメーションの繰り返し回数（1回）
+            forwards：アニメーション終了時の状態をそのまま維持
+            */
+    #fade-online {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff;
+      height: 250px;
+      width: 50%;
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
+      opacity: 0;
+
+      img {
+        width: auto;
+        height: 60px;
+        margin-right: 20px;
+      }
+
+      p {
+        font-size: 36px;
+        font-weight: bold;
+        color: rgb(252, 44, 44);
+
+        span {
+          font-weight: normal;
+          font-size: 20px;
+          color: black;
+        }
+      }
+
+    }
+
+    @keyframes slide-left {
+      0% {
+        opacity: .5;
+        transform: translateX(-25%);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+    }
+
+
+    .fade-right {
+      animation: slide-right .8s ease-out 0.3s 1 forwards;
+    }
+
+    #fade-teacher {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff;
+      height: 250px;
+      width: 50%;
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+      margin-top: 30px;
+      margin-left: auto;
+      margin-right: 0;
+      opacity: 0;
+
+      img {
+        width: auto;
+        height: 60px;
+        margin-right: 20px;
+      }
+
+      p {
+        font-size: 36px;
+        font-weight: bold;
+        color: rgb(252, 44, 44);
+
+        span {
+          font-weight: normal;
+          font-size: 20px;
+          color: black;
+        }
+      }
+    }
+
+    @keyframes slide-right {
+      0% {
+        opacity: .3;
+        transform: translateX(25%);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  }
+}
+
+
+@media (max-width:900px) {
+
+  .reason {
+    &__container {
+      padding: 40px 0;
+      overflow: hidden;
+      margin-top: 50px;
+
+
+      & #fade-online {
+        height: 130px;
+        width: 100%;
+        padding: 0 10px 0 20px;
+
+        p {
+          font-size: 24px;
+        }
+
+        img {
+          width: auto;
+          height: 40px;
+          margin-left: 30px;
+        }
+      }
+
+      #fade-teacher {
+        height: 130px;
+        width: 100%;
+        padding: 0 40px 0 20px;
+
+        p {
+          font-size: 24px;
+        }
+
+        img {
+          width: auto;
+          height: 40px;
+        }
+      }
+
+      @keyframes slide-left {
+        0% {
+          opacity: .5;
+          transform: translateX(-25%);
+        }
+
+        100% {
+          opacity: 1;
+          transform: translateX(-10%);
+        }
+
+      }
+
+      @keyframes slide-right {
+        0% {
+          opacity: .3;
+          transform: translateX(25%);
+        }
+
+        100% {
+          opacity: 1;
+          transform: translateX(10%);
+        }
+      }
+    }
+  }
+}
+
+
+.student {
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 150px;
+
+  .card {
+    animation: hop .8s ease 0.3s 1 forwards;
+  }
+
+  .student-data {
+    display: flex;
+
+    margin-top: 80px;
+    opacity: 0;
+
+
+    .student__data {
+      width: 120px;
+      margin-right: 30px;
+
+      img {
+        background-color: #ddd;
+        border-radius: 50%;
+        max-width: none;
+        width: 120px;
+      }
+
+      p {
+        font-size: 12px;
+        text-align: center;
+        margin-top: 10px;
+        line-height: 1.5;
+      }
+    }
+
+    .card-text {
+      width: 60%;
+      background-color: rgb(199, 233, 253);
+      border-radius: 30px;
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 60%;
+        left: 0;
+        margin-left: -30px;
+        border: 15px solid transparent;
+        border-right: 15px solid rgb(199, 233, 253);
+      }
+
+      p {
+        line-height: 1.3;
+        font-size: 16px;
+        padding: 0 30px;
+      }
+    }
+
+
+  }
+
+  @keyframes hop {
+    0% {
+      opacity: 0.2;
+      transform: translateY(20px);
+    }
+
+    50% {
+      opacity: .6;
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+  }
+
+  // ２番目の受講生の声
+  .student-data-2 {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 80px;
+    opacity: 0;
+
+    .student__data {
+      width: 120px;
+      margin-left: 30px;
+      margin-right: 0;
+      text-align: center;
+      margin-top: 10px;
+      line-height: 1.5;
+      font-size: 12px;
+    }
+
+    img {
+      background-color: #ddd;
+      border-radius: 50%;
+      max-width: none;
+      width: 120px;
+    }
+
+    .card-text {
+      width: 60%;
+      background-color: rgb(199, 233, 253);
+      border-radius: 30px;
+      padding: 0 20px;
+      margin-bottom: 26px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 60%;
+        right: 0;
+        border: 15px solid transparent;
+        border-left: 15px solid rgb(199, 233, 253);
+        margin-right: -30px;
+      }
+
+      p {
+        line-height: 1.3;
+        font-size: 16px;
+        padding: 0 30px;
+      }
+    }
+
+  }
+
+}
+
+@media (max-width:900px) {
+  .student {
+    margin-top: 80px;
+  }
+
+  .student .student__card {
+    padding: 0 20px;
+  }
+
+  .student .student-data {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+
+    .student__data {
+      margin: 0;
+    }
+
+    .card-text {
+      margin-top: 50px;
+      width: 100%;
+
+      &::before {
+        top: 100%;
+        left: calc(50% + 15px);
+        border: 15px solid transparent;
+        border-top: 15px solid rgb(199, 233, 253);
+      }
+    }
+
+    .card-text p {
+      padding: 40px 30px;
+    }
+  }
+
+  .student .student-data-2 {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+
+    .student__data {
+      margin: 0;
+    }
+
+    .card-text {
+      margin-top: 50px;
+      width: 100%;
+
+      &::after {
+        top: 100%;
+        right: calc(50% + 15px);
+        border: 15px solid transparent;
+        border-top: 15px solid rgb(199, 233, 253);
+      }
+    }
+
+    .card-text p {
+      padding: 40px 10px;
+    }
+  }
+}
+
+
+// gif のアニメーション設定
+@keyframes fall {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: -700px 700px;
+  }
+}
+
+.school {
+  background: url(./img/bg.gif) repeat;
+  padding: 160px 0 60px 0;
+  margin-top: 100px;
+  animation: fall 10s infinite linear;
+
+  &__wrapper {
+    max-width: 860px;
+    margin: 100px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .card {
+      width: 48%;
+      background-color: #fff;
+      margin-bottom: 34px;
+      padding: 60px;
+      border-radius: 30px;
+
+      & h3 {
+        font-size: 36px;
+        text-align: center;
+
+        & span {
+          font-size: 20px;
+          display: block;
+          margin-top: 20px;
+        }
+      }
+
+      & p {
+        font-size: 16px;
+        margin: 30px 10px 10px 0;
+      }
+    }
+  }
+}
+
+// SP
+@media (max-width:900px) {
+  .school {
+    &__wrapper {
+      flex-direction: column;
+      padding: 0 20px;
+
+      .card {
+        width: 100%;
+        padding: 30px;
+      }
+    }
+  }
+}
+
+.contact {
+  padding: 150px 0;
+  text-align: center;
+
+  &--text {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 5px;
+
+    span {
+      display: block;
+      font-size: 16px;
+      font-weight: normal;
+      margin: 20px 0;
+    }
+  }
+
+
+  a {
+    display: block;
+    max-width: 860px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 0;
+    margin-top: 30px;
+    background-color: rgb(252, 44, 44);
+    font-size: 24px;
+    color: #fff;
+    border-radius: 50px;
+  }
+}
+
+// SP
+@media (max-width:900px) {
+  .contact {
+    padding: 100px 50px;
+
+    &--text {
+      font-size: 24px;
+      line-height: 1.2;
+
+      span {
+        font-size: 1rem;
+      }
+    }
+
+    .contact-btn {
+      font-size: 20px;
+    }
+  }
+}
+
+
+.footer {
+  background-color: #e8e8e8;
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    max-width: 860px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 80px 0;
+  }
+
+  &__menu li p {
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  &__menu li a {
+    display: block;
+    margin-left: 18px;
+    padding: 10px 0;
+  }
+
+  &--logo {
+    text-align: center;
+    padding: 20px 0;
+  }
+}
+
+// SP
+@media (max-width: 900px) {
+  .footer {
+    &__wrapper {
+      flex-wrap: wrap;
+      padding: 0 15px;
+    }
+
+    &__menu {
+      padding-top: 50px;
+      width: 50%;
+    }
+  }
+}
